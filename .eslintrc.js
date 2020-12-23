@@ -117,7 +117,9 @@ module.exports = {
     }
   },
   ignorePatterns: [
-    '**/dist/**/*.*', '*.js'
+    '**/dist/**/*.*',
+    '*.js',
+    '**/examples/**/*.*'
   ],
   overrides: [ {
     files: [ '**/__tests__/**', '**/__test__.ts' ],
@@ -133,14 +135,5 @@ module.exports = {
     rules: {
       'max-lines-per-function': 0,
     },
-  }, {
-    files: [ './src/generator/bin.js' ],
-    env: {
-      node: true,
-    },
-    rules: {
-      '@typescript-eslint/no-var-requires': 0,
-    },
   } ],
-
 }

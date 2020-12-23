@@ -1,6 +1,5 @@
 import { JValue } from './JValue'
 import { JValueType } from './types'
-import { isErr } from '../result'
 import { getValidOpts } from './options/num'
 import type { ConvertOptionType, CommonJValueOptions } from './options'
 
@@ -24,14 +23,18 @@ export class JNumber extends JValue {
 
   constructor( optsIn: undefined | JNumberOptions = {} ) {
     super( JValueType.Number, optsIn )
-    const opts = getValidOpts( optsIn )
-    if ( isErr( opts ) ) this.throwErr( opts.error )
-    const val = opts.value
-    this.or = val.or
-    this.orDefault = val.orDefault
-    this.min = val.min
-    this.max = val.max
-    this.convert = val.convert
+    let opts
+    try {
+      opts = getValidOpts( optsIn )
+    } catch ( e ) {
+      this.throwErr( e )
+    }
+
+    this.or = opts.or
+    this.orDefault = opts.orDefault
+    this.min = opts.min
+    this.max = opts.max
+    this.convert = opts.convert
   }
 }
 

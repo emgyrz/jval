@@ -1,9 +1,5 @@
-
 import { isF, isNil, isObj, isStr } from '../../hlp'
-
-import { err, ok } from "../../result"
-import { JValue } from "../JValue"
-import type { Result } from "../../result"
+import { JValue } from '../JValue'
 import type { ConvertOptionType } from './types'
 
 
@@ -18,14 +14,14 @@ interface IMaybeHasConvert {
 
 function getOptionalConvertOption(
   obj: IMaybeHasConvert,
-): Result<null | string | ConvertOptionType, string> {
+): never | null | string | ConvertOptionType {
   const val = obj.convert
-  if ( isNil( val ) ) return ok( null )
-  if ( isStr( val ) ) return ok( val )
-  if ( isConvertOptionObjValid( val ) ) return ok( val )
-  const msg = '"convert" option must be a string alias or object' +
-    ' with valid "returnType" and "method" fields'
-  return err( msg )
+  if ( isNil( val ) ) return null
+  if ( isStr( val ) ) return val
+  if ( isConvertOptionObjValid( val ) ) return val
+
+  throw '"convert" option must be a string alias or object' +
+  ' with valid "returnType" and "method" fields'
 }
 
 function isConvertOptionObjValid( obj: unknown ): obj is ConvertOptionType {

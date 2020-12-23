@@ -1,34 +1,28 @@
-import { err, isErr, ok } from "../../result"
 import { castBool, isBool, isNil, isNum, isStr } from '../../hlp'
-import type { Result } from "../../result"
 import type { Indexed } from "../types"
 
-
-export function getBool( obj: Indexed, key: string, def?: boolean ): Result<boolean, string> {
+export function getBool( obj: Indexed, key: string, def?: boolean ): never | boolean {
   const res = getBoolOrNull( obj, key )
-  if ( isErr( res ) ) return res
-  const val = res.value
-  if ( isBool( val ) ) return res as Result<boolean, string>
-  return ok( castBool( def, false ) )
+  return castBool( res, castBool( def, false ) )
 }
 
-export function getBoolOrNull( obj: Indexed, key: string ): Result<null | boolean, string> {
+export function getBoolOrNull( obj: Indexed, key: string ): never | null | boolean {
   const val = obj[ key ]
-  if ( isNil( val ) ) return ok( null )
-  if ( isBool( val ) ) return ok( val )
-  return err( `"${ key }" must be a boolean` )
+  if ( isNil( val ) ) return null
+  if ( isBool( val ) ) return val
+  throw `"${ key }" must be a boolean`
 }
 
-export function getStrOrNull( obj: Indexed, key: string ): Result<null | string, string> {
+export function getStrOrNull( obj: Indexed, key: string ): never | null | string {
   const val = obj[ key ]
-  if ( isNil( val ) ) return ok( null )
-  if ( isStr( val ) ) return ok( val )
-  return err( `"${ key }" must be a string` )
+  if ( isNil( val ) ) return null
+  if ( isStr( val ) ) return val
+  throw `"${ key }" must be a string`
 }
 
-export function getNumOrNull( obj: Indexed, key: string ): Result<null | number, string> {
+export function getNumOrNull( obj: Indexed, key: string ): never | null | number {
   const val = obj[ key ]
-  if ( isNil( val ) ) return ok( null )
-  if ( isNum( val ) ) return ok( val )
-  return err( `"${ key }" must be a number` )
+  if ( isNil( val ) ) return null
+  if ( isNum( val ) ) return val
+  throw `"${ key }" must be a number`
 }

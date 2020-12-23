@@ -2,7 +2,6 @@ import { isObj, jstr } from '../hlp'
 import type { JValueType } from "./types"
 
 import type {
-  CommonJValueOptionsValidated,
   ConvertOptionType,
   CommonJValueOptions,
 } from './options'
@@ -10,7 +9,6 @@ import { DeclarationError } from "./error"
 import {
   getValidCommonJValueOptions,
 } from "./options"
-import { isErr } from "../result"
 
 
 export class JValue {
@@ -36,7 +34,12 @@ export class JValue {
 
     this._checkCtorOptsIsObj( optsIn )
 
-    const opts = this._getValidCommonOpts( optsIn )
+    let opts
+    try {
+      opts = getValidCommonJValueOptions( optsIn )
+    } catch ( e ) {
+      this.throwErr( e )
+    }
 
     this.nullable = opts.nullable
     this.optional = opts.optional
@@ -45,23 +48,13 @@ export class JValue {
   }
 
 
-  private _checkCtorOptsIsObj( opts: CommonJValueOptions ): void | never {
+  private _checkCtorOptsIsObj( opts: CommonJValueOptions ): never | void {
     if ( !isObj( opts ) ) {
       const msg = 'Creating declaration options must be a plain object. '
         + `But actually is ${jstr( opts )}`
       this.throwErr( msg )
     }
   }
-
-
-  private _getValidCommonOpts( opts: CommonJValueOptions ): never | CommonJValueOptionsValidated {
-    const validOptsResult = getValidCommonJValueOptions( opts )
-    if ( isErr( validOptsResult ) ) {
-      this.throwErr( validOptsResult.error )
-    }
-    return validOptsResult.value
-  }
-
 
   protected throwErr( msg: string ): never {
     throw new DeclarationError( {

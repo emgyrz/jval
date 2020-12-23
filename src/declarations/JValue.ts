@@ -1,5 +1,5 @@
 import { isObj, jstr } from '../hlp'
-import { JValueType } from "./types"
+import type { JValueType } from "./types"
 
 import type {
   CommonJValueOptionsValidated,
@@ -27,7 +27,7 @@ export class JValue {
   public readonly optional: boolean
   public readonly rename: null | string
 
-  public readonly convert: null | ConvertOptionType = null
+  public convert: null | ConvertOptionType = null
   protected readonly convertUnverified: null | string | ConvertOptionType
 
 
@@ -36,7 +36,7 @@ export class JValue {
 
     this._checkCtorOptsIsObj( optsIn )
 
-    const opts = this._getValidOpts( optsIn )
+    const opts = this._getValidCommonOpts( optsIn )
 
     this.nullable = opts.nullable
     this.optional = opts.optional
@@ -54,7 +54,7 @@ export class JValue {
   }
 
 
-  private _getValidOpts( opts: CommonJValueOptions ): never | CommonJValueOptionsValidated {
+  private _getValidCommonOpts( opts: CommonJValueOptions ): never | CommonJValueOptionsValidated {
     const validOptsResult = getValidCommonJValueOptions( opts )
     if ( isErr( validOptsResult ) ) {
       this.throwErr( validOptsResult.error )

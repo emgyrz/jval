@@ -1,17 +1,14 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  env: {
-    'jest/globals': true,
-  },
   plugins: [
     '@typescript-eslint',
-    'jest',
   ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:jest/all',
+    'plugin:import/errors',
+    'plugin:import/warnings',
   ],
   rules: {
     'accessor-pairs': 1,
@@ -80,6 +77,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 2,
     '@typescript-eslint/explicit-module-boundary-types': 2,
     '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/consistent-type-imports': 2,
 
 
     'jest/prefer-expect-assertions': [ 2, {
@@ -87,11 +85,29 @@ module.exports = {
     } ],
     'jest/require-to-throw-message': 0,
   },
+  'settings': {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".ts",
+        ]
+      }
+    }
+  },
   ignorePatterns: [
     '**/dist/**/*.*', '*.js'
   ],
   overrides: [ {
     files: [ '**/__tests__/**', '**/__test__.ts' ],
+    extends: [
+      'plugin:jest/all',
+    ],
+    env: {
+      'jest/globals': true,
+    },
+    plugins: [
+      'jest',
+    ],
     rules: {
       'max-lines-per-function': 0,
     },

@@ -1,6 +1,7 @@
-import { err, isErr, ok, Result } from "../result"
-import { castBool, isBool, isNil, isStr } from "../hlp"
-import type { Indexed } from "./types"
+import { err, isErr, ok } from "../../result"
+import { castBool, isBool, isNil, isNum, isStr } from '../../hlp'
+import type { Result } from "../../result"
+import type { Indexed } from "../types"
 
 
 export function getBool( obj: Indexed, key: string, def?: boolean ): Result<boolean, string> {
@@ -23,4 +24,11 @@ export function getStrOrNull( obj: Indexed, key: string ): Result<null | string,
   if ( isNil( val ) ) return ok( null )
   if ( isStr( val ) ) return ok( val )
   return err( `"${ key }" must be a string` )
+}
+
+export function getNumOrNull( obj: Indexed, key: string ): Result<null | number, string> {
+  const val = obj[ key ]
+  if ( isNil( val ) ) return ok( null )
+  if ( isNum( val ) ) return ok( val )
+  return err( `"${ key }" must be a number` )
 }

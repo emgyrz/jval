@@ -1,5 +1,5 @@
-import { JValueType } from "./types"
-import { JValue } from "./JValue"
+import type { JValueType } from "./types"
+import type { JValue } from "./JValue"
 
 export interface DeclarationErrorCtorArg {
   jType: JValueType,

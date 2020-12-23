@@ -1,5 +1,5 @@
 import type { JValue } from "../JValue"
-import { Indexed } from "../types"
+import type { Indexed } from "../types"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ConvertOptionType<T = any, R = unknown> = {

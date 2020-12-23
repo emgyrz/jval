@@ -1,6 +1,6 @@
 import { isErr, ok } from "../../result"
 import { getOptionalConvertOption } from "./getConvertOption"
-import { getBool, getStrOrNull } from "../utils"
+import { getBool, getStrOrNull } from "./utils"
 import type { Result } from "../../result"
 import type{ CommonJValueOptionsValidated, CommonJValueOptions } from "./types"
 

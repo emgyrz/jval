@@ -16,6 +16,7 @@ describe( 'jArray', () => {
 
   it( 'invalid opts', () => {
     const invalidOpts = [
+      {},
       { item: 1 },
       { notEmpty: {} },
       { skipNonValid: 'bar' },

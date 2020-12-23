@@ -23,5 +23,5 @@ export class DeclarationError extends Error {
 
 
 function wrapMsg( jType: JValueType, msg: string ): string {
-  return `Error when declaring value ${jType}: ${msg}`
+  return `Error when declaring J${jType}: ${msg}`
 }

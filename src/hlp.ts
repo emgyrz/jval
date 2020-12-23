@@ -30,8 +30,12 @@ export function isNum( n: unknown ): n is number {
   return typeof n === 'number' && _isFinite( n )
 }
 
+export function isFloat( n: unknown ): n is number {
+  return isNum( n ) && ( n % 1 !== 0 )
+}
+
 export function isUint( n: unknown ): n is number {
-  return isNum( n ) && n >= 0
+  return isNum( n ) && n >= 0 && !isFloat( n )
 }
 
 //

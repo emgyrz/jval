@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { JNumber, Num } from '../JNumber'
 import { JValueType } from '../types'
 import { DeclarationError } from '../error'
@@ -35,7 +34,7 @@ describe( 'jNumber', () => {
   } )
 
   it( 'conflicting opts', () => {
-    const invalidOpts = [
+    const conflictingOpts = [
       { or: 2, min: 3 },
       { or: 10, max: 5 },
       { orDefault: true, max: -5 },
@@ -43,7 +42,7 @@ describe( 'jNumber', () => {
       { min: 3, max: 2 },
       { orDefault: true, or: 10 },
     ]
-    invalidOpts.forEach( ( opts ) => {
+    conflictingOpts.forEach( ( opts ) => {
       expect( () => {
         new JNumber( opts )
       } ).toThrow( DeclarationError )

@@ -1,4 +1,4 @@
-import { castBool, isBool, isNil, isNum, isStr } from '../../hlp'
+import { castBool, isBool, isNil, isNum, isStr, isUint } from '../../hlp'
 
 type Indexed = Record<string, unknown>
 
@@ -27,3 +27,11 @@ export function getNumOrNull( obj: Indexed, key: string ): never | null | number
   if ( isNum( val ) ) return val
   throw `"${ key }" must be a number`
 }
+
+export function getUintOrNull( obj: Indexed, key: string ): never | null | number {
+  const val = obj[ key ]
+  if ( isNil( val ) ) return null
+  if ( isUint( val ) ) return val
+  throw `"${ key }" must be an unsigned integer`
+}
+

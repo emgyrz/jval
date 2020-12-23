@@ -11,6 +11,9 @@ export interface JNumberOptions extends CommonJValueOptions {
   min?: number,
   max?: number,
   convert?: NumberConvertAliases | ConvertOptionType<number>,
+  // TODO:
+  // int
+  // float
 }
 
 export class JNumber extends JValue {

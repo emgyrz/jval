@@ -39,6 +39,11 @@ function checkOptsCorrectness( opts: JNumberVerifiedOptions ): never | void {
       + ' So it conflicts with "orDefault" option which is set to `true`'
       + ' and indicates that the value can be zero'
   }
+  if ( max !== null && orDefault && max < 0 ) {
+    throw '"max" is set and is less than zero.'
+    + ' So it conflicts with "orDefault" option which is set to `true`'
+    + ' and indicates that the value can be zero'
+  }
 
   if ( or !== null ) {
     if ( min !== null && or < min ) {
@@ -47,5 +52,9 @@ function checkOptsCorrectness( opts: JNumberVerifiedOptions ): never | void {
     if ( max !== null && or > max ) {
       throw '"or" option value is greater than "max"'
     }
+  }
+
+  if ( or !== null && orDefault ) {
+    throw '"or" and "orDefault" options cannot be set together'
   }
 }

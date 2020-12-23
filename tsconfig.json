@@ -29,8 +29,6 @@
   ],
   "exclude": [
     "./dist",
-    "**/__tests__/**",
-    "**/__test__.ts",
     "./example/**/*.*"
   ]
 }

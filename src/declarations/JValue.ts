@@ -1,19 +1,13 @@
-import { isObj, jstr } from '../hlp'
-import type { JValueType } from "./types"
-
-import type {
-  ConvertOptionType,
-  CommonJValueOptions,
-} from './options'
+import { isObj, isStr, jstr } from '../hlp'
 import { DeclarationError } from "./error"
-import {
-  getValidCommonJValueOptions,
-} from "./options"
+import { getBool, getStrOrNull } from './options/utils'
+import { getOptionalConvertOption } from './options/getConvertOption'
+import type { JValueType } from "./types"
+import type { ConvertOptionType, CommonJValueOptions } from './options/types'
 
 
 export class JValue {
   public static isJValue( some: unknown ): some is JValue {
-    if ( !some ) return false
     return some instanceof JValue
     // // @ts-ignore
     // return Object.keys( JValueType ).includes( some.jType )
@@ -37,7 +31,7 @@ export class JValue {
     let opts
     try {
       opts = getValidCommonJValueOptions( optsIn )
-    } catch ( e ) {
+    } catch ( e: unknown ) {
       this.throwErr( e )
     }
 
@@ -56,11 +50,32 @@ export class JValue {
     }
   }
 
-  protected throwErr( msg: string ): never {
+  protected throwErr( msg: unknown | string ): never {
+    if ( !isStr( msg ) ) throw msg
     throw new DeclarationError( {
       jType: this.jType,
       declaration: this,
       msg,
     } )
+  }
+}
+
+
+type CommonJValueOptionsValidated = {
+  nullable: boolean,
+  optional: boolean,
+  rename: null | string,
+  convert: null | string | ConvertOptionType,
+}
+
+function getValidCommonJValueOptions(
+  opts: CommonJValueOptions,
+): never | CommonJValueOptionsValidated {
+
+  return {
+    nullable: getBool( opts, 'nullable' ),
+    optional: getBool( opts, 'optional' ),
+    rename: getStrOrNull( opts, 'rename' ),
+    convert: getOptionalConvertOption( opts ),
   }
 }

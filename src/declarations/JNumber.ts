@@ -1,7 +1,7 @@
 import { JValue } from './JValue'
 import { JValueType } from './types'
 import { getValidOpts } from './options/num'
-import type { ConvertOptionType, CommonJValueOptions } from './options'
+import type { ConvertOptionType, CommonJValueOptions } from './options/types'
 
 export type NumberConvertAliases = 'toStr' | 'toDateFromSec' | 'toDateFromMs'
 
@@ -26,7 +26,7 @@ export class JNumber extends JValue {
     let opts
     try {
       opts = getValidOpts( optsIn )
-    } catch ( e ) {
+    } catch ( e: unknown ) {
       this.throwErr( e )
     }
 

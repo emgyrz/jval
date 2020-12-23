@@ -9,7 +9,7 @@ export {
 
 
 interface IMaybeHasConvert {
-  convert?: string | ConvertOptionType
+  convert?: string | ConvertOptionType,
 }
 
 function getOptionalConvertOption(

@@ -2,10 +2,10 @@ export function jstr( val: unknown ): string {
   if ( isStr( val ) ) return val
   return `"${JSON.stringify( val )}"`
 }
-
-export function objHas( obj: unknown, key: string ): boolean {
-  return isObj( obj ) && obj.hasOwnProperty( key )
-}
+//
+// export function objHas( obj: unknown, key: string ): boolean {
+//   return isObj( obj ) && obj.hasOwnProperty( key )
+// }
 
 
 export function isPrimitiveArraysSimilar( arr: unknown[], other: unknown[] ): boolean {

@@ -1,5 +1,4 @@
 import type { JValue } from "../JValue"
-import type { Indexed } from "../types"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ConvertOptionType<T = any, R = unknown> = {
@@ -8,16 +7,9 @@ export type ConvertOptionType<T = any, R = unknown> = {
 }
 
 
-export interface CommonJValueOptions extends Indexed {
+export interface CommonJValueOptions extends Record<string, unknown> {
   nullable?: boolean,
   optional?: boolean,
   rename?: string,
   convert?: string | ConvertOptionType,
-}
-
-export type CommonJValueOptionsValidated = {
-  nullable: boolean,
-  optional: boolean,
-  rename: null | string,
-  convert: null | string | ConvertOptionType,
 }

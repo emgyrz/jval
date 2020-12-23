@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json'
+  },
   plugins: [
     '@typescript-eslint',
   ],
@@ -78,7 +81,26 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 2,
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/consistent-type-imports': 2,
-
+    '@typescript-eslint/consistent-indexed-object-style': [ 2, 'record' ],
+    '@typescript-eslint/consistent-type-assertions': 2,
+    '@typescript-eslint/explicit-member-accessibility': [ 2, { overrides: { constructors: 'no-public' } } ],
+    '@typescript-eslint/member-delimiter-style': [2, {
+      "multiline": {
+        "delimiter": "comma",
+      },
+      "singleline": {
+        "delimiter": "comma",
+        "requireLast": false
+      }
+    }],
+    '@typescript-eslint/method-signature-style': [ 2, 'property' ],
+    '@typescript-eslint/no-confusing-void-expression': 2,
+    '@typescript-eslint/no-implicit-any-catch': 2,
+    '@typescript-eslint/no-invalid-void-type': 2,
+    '@typescript-eslint/prefer-nullish-coalescing': 2,
+    '@typescript-eslint/prefer-optional-chain': 2,
+    '@typescript-eslint/switch-exhaustiveness-check': 2,
+    '@typescript-eslint/strict-boolean-expressions': 2,
 
     'jest/prefer-expect-assertions': [ 2, {
       'onlyFunctionsWithAsyncKeyword': true,
@@ -86,10 +108,10 @@ module.exports = {
     'jest/require-to-throw-message': 0,
   },
   'settings': {
-    "import/resolver": {
-      "node": {
-        "extensions": [
-          ".ts",
+    'import/resolver': {
+      'node': {
+        'extensions': [
+          '.ts',
         ]
       }
     }

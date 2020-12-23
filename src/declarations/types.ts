@@ -1,6 +1,4 @@
 
-export interface Indexed {[ key: string ]: unknown}
-
 export enum JValueType {
   Null = 'Null',
   Boolean = 'Boolean',

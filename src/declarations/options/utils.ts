@@ -1,5 +1,6 @@
 import { castBool, isBool, isNil, isNum, isStr } from '../../hlp'
-import type { Indexed } from "../types"
+
+type Indexed = Record<string, unknown>
 
 export function getBool( obj: Indexed, key: string, def?: boolean ): never | boolean {
   const res = getBoolOrNull( obj, key )

@@ -9,8 +9,6 @@ import type { ConvertOptionType, CommonJValueOptions } from './options/types'
 export class JValue {
   public static isJValue( some: unknown ): some is JValue {
     return some instanceof JValue
-    // // @ts-ignore
-    // return Object.keys( JValueType ).includes( some.jType )
   }
 
   public readonly jType: JValueType
@@ -51,7 +49,7 @@ export class JValue {
   }
 
   protected throwErr( msg: unknown | string ): never {
-    if ( !isStr( msg ) ) throw msg
+    if ( !isStr( msg ) ) throw `Unknown internal error: ${msg}`
     throw new DeclarationError( {
       jType: this.jType,
       declaration: this,

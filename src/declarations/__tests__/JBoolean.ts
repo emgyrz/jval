@@ -3,15 +3,15 @@ import { JValueType } from '../types'
 import { DeclarationError } from '../error'
 import { Num } from '../JNumber'
 
-describe( 'jNumber', () => {
+describe( 'jArray', () => {
   it( 'defaults', () => {
-    const num = Bool()
-    expect( num.jType ).toBe( JValueType.Boolean )
-    expect( num.jType ).toBe( 'Boolean' )
-    expect( num.nullable ).toBe( false )
-    expect( num.optional ).toBe( false )
-    expect( num.or ).toBeNull()
-    expect( num.orDefault ).toBe( false )
+    const bool = Bool()
+    expect( bool.jType ).toBe( JValueType.Boolean )
+    expect( bool.jType ).toBe( 'Boolean' )
+    expect( bool.nullable ).toBe( false )
+    expect( bool.optional ).toBe( false )
+    expect( bool.or ).toBeNull()
+    expect( bool.orDefault ).toBe( false )
   } )
 
   it( 'invalid opts', () => {

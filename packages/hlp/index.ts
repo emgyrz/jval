@@ -30,12 +30,16 @@ export function isNum( n: unknown ): n is number {
   return typeof n === 'number' && _isFinite( n )
 }
 
+export function isInt( n: unknown ): n is number {
+  return isNum( n ) && ( n % 1 === 0 )
+}
+
 export function isFloat( n: unknown ): n is number {
   return isNum( n ) && ( n % 1 !== 0 )
 }
 
 export function isUint( n: unknown ): n is number {
-  return isNum( n ) && n >= 0 && !isFloat( n )
+  return isInt( n ) && n >= 0
 }
 
 //
@@ -79,7 +83,24 @@ export function isF( f: unknown ): f is CallableFunction {
 }
 
 
+//
+// null & undefined
+//
 export function isNil( some: unknown ): some is null | undefined {
   return some === null || some === undefined
 }
 
+
+
+//
+// Date
+//
+const _toStr = Object.prototype.toString
+const _dateTypeStr = '[object Date]'
+export function isDate( some: unknown ): some is Date {
+  return _toStr.call( some ) === _dateTypeStr
+}
+
+export function isValidDate( some: unknown ): some is Date {
+  return isDate( some ) && !isNaN( some.getTime() )
+}

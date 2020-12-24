@@ -1,7 +1,6 @@
 import { isObj, isStr, jstr } from 'hlp'
 import { DeclarationError } from "./error"
-import { getBool, getStrOrNull } from './options/utils'
-import { getOptionalConvertOption } from './options/getConvertOption'
+import { getValidCommonJValueOptions } from './options/common'
 import type { JValueType } from "./types"
 import type { ConvertOptionType, CommonJValueOptions } from './options/types'
 
@@ -17,9 +16,7 @@ export class JValue {
   public readonly optional: boolean
   public readonly rename: null | string
 
-  public convert: null | ConvertOptionType = null
-  protected readonly convertUnverified: null | string | ConvertOptionType
-
+  public readonly convert: null | ConvertOptionType
 
   constructor( jType: JValueType, optsIn: CommonJValueOptions ) {
     this.jType = jType
@@ -28,7 +25,7 @@ export class JValue {
 
     let opts
     try {
-      opts = getValidCommonJValueOptions( optsIn )
+      opts = getValidCommonJValueOptions( optsIn, jType )
     } catch ( e: unknown ) {
       this.throwErr( e )
     }
@@ -36,7 +33,7 @@ export class JValue {
     this.nullable = opts.nullable
     this.optional = opts.optional
     this.rename = opts.rename
-    this.convertUnverified = opts.convert
+    this.convert = opts.convert
   }
 
 
@@ -55,25 +52,5 @@ export class JValue {
       declaration: this,
       msg,
     } )
-  }
-}
-
-
-type CommonJValueOptionsValidated = {
-  nullable: boolean,
-  optional: boolean,
-  rename: null | string,
-  convert: null | string | ConvertOptionType,
-}
-
-function getValidCommonJValueOptions(
-  opts: CommonJValueOptions,
-): never | CommonJValueOptionsValidated {
-
-  return {
-    nullable: getBool( opts, 'nullable' ),
-    optional: getBool( opts, 'optional' ),
-    rename: getStrOrNull( opts, 'rename' ),
-    convert: getOptionalConvertOption( opts ),
   }
 }

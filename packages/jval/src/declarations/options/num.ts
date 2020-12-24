@@ -1,14 +1,12 @@
 import { isNum } from 'hlp'
 import { getBool, getNumOrNull } from './utils'
 import type { JNumberOptions } from '../JNumber'
-import type { ConvertOptionType } from './types'
 
 export type JNumberVerifiedOptions = {
   or: null | number,
   orDefault: boolean,
   min: null | number,
   max: null | number,
-  convert: null | ConvertOptionType<number>,
 }
 
 export function getValidOpts( optsIn: JNumberOptions ): never | JNumberVerifiedOptions {
@@ -23,11 +21,8 @@ function getOptsWithValidTypes( opts: JNumberOptions ): never | JNumberVerifiedO
     orDefault: getBool( opts, 'orDefault' ),
     min: getNumOrNull( opts, 'min' ),
     max: getNumOrNull( opts, 'max' ),
-    // TODO:
-    convert: null,
   }
 }
-
 
 function checkOptsCorrectness( opts: JNumberVerifiedOptions ): never | void {
   const { min, max, orDefault, or } = opts

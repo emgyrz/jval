@@ -1,11 +1,11 @@
-import { JValue, JValueType } from '../../declarations'
-import type { JArray, JBoolean, JNumber, JObject, JString } from '../../declarations'
+import { JValue, JValueType } from '../declarations'
+import type { JArray, JBoolean, JNumber, JObject, JString } from '../declarations'
 
-import { getBool } from './bool'
-import { getArr } from './arr'
-import { getNum } from './num'
-import { getObj } from './obj'
-import { getStr } from './str'
+import { getBool } from './methods/bool'
+import { getArr } from './methods/arr'
+import { getNum } from './methods/num'
+import { getObj } from './methods/obj'
+import { getStr } from './methods/str'
 
 export function convert( decl: JValue, value: unknown ): never | null | undefined | unknown {
   const val = get( decl, value )

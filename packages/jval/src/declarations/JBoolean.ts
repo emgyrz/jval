@@ -26,7 +26,6 @@ export class JBoolean extends JValue {
 
     this.or = opts.or
     this.orDefault = opts.orDefault
-    this.convert = this.convertUnverified as ConvertOptionType<boolean>
   }
 }
 

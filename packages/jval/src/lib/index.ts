@@ -1,7 +1,7 @@
 import { jstr } from 'hlp'
 import { JValue } from '../declarations'
-import { isValid } from './methods/isValid'
-import { convert } from './methods/convert'
+import { isValid } from './isValid'
+import { convert } from './convert'
 
 
 export function isValueValid( decl: JValue, value: unknown ): boolean {

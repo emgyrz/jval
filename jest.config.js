@@ -1,9 +1,9 @@
 module.exports = {
   verbose: true,
   bail: false,
-  roots: [ '<rootDir>/packages/*/src' ],
+  roots: [ '<rootDir>/packages/jval/src' ],
   testMatch: [
-    '<rootDir>/packages/*/src/**/__tests__/*.ts',
+    '<rootDir>/packages/jval/src/**/__tests__/*.ts',
   ],
   moduleFileExtensions: [ 'ts', 'js' ],
 }

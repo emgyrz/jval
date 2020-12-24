@@ -1,7 +1,7 @@
 import { isObj, isStr } from 'hlp'
 import { getNullOrOptional } from '../utils'
-import { convert } from './convert'
-import { isValid } from './isValid'
+import { convert } from '../convert'
+import { isValid } from '../isValid'
 import type { JObject, JValue } from '../../declarations'
 
 

@@ -23,7 +23,6 @@ export class JObject extends JValue {
     }
 
     this.props = opts.props
-    this.convert = this.convertUnverified as ConvertOptionType<Record<string, unknown>>
   }
 }
 

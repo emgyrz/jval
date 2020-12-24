@@ -1,11 +1,11 @@
-import { JValueType } from '../../declarations'
-import type { JArray, JBoolean, JNumber, JObject, JString, JValue } from '../../declarations'
+import { JValueType } from '../declarations'
+import type { JArray, JBoolean, JNumber, JObject, JString, JValue } from '../declarations'
 
-import { isBoolValid } from './bool'
-import { isNumValid } from './num'
-import { isStrValid } from './str'
-import { isObjValid } from './obj'
-import { isArrValid } from './arr'
+import { isBoolValid } from './methods/bool'
+import { isNumValid } from './methods/num'
+import { isStrValid } from './methods/str'
+import { isObjValid } from './methods/obj'
+import { isArrValid } from './methods/arr'
 
 export function isValid( decl: JValue, value: unknown ): boolean {
   switch ( decl.jType ) {

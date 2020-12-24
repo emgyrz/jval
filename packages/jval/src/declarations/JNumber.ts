@@ -37,7 +37,6 @@ export class JNumber extends JValue {
     this.orDefault = opts.orDefault
     this.min = opts.min
     this.max = opts.max
-    this.convert = opts.convert
   }
 }
 

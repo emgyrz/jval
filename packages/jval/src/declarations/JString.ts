@@ -37,7 +37,6 @@ export class JString extends JValue {
     this.minLength = opts.minLength
     this.maxLength = opts.maxLength
     this.literals = opts.literals
-    this.convert = opts.convert
   }
 }
 

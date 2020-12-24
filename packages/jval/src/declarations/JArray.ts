@@ -37,7 +37,6 @@ export class JArray extends JValue {
     this.orDefault = opts.orDefault
     this.notEmpty = opts.notEmpty
     this.skipNonValid = opts.skipNonValid
-    this.convert = this.convertUnverified as ConvertOptionType<Array<unknown>>
   }
 }
 

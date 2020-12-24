@@ -1,8 +1,8 @@
 import { isF } from 'hlp'
 import { JArray } from '../../declarations'
 import { getNullOrOptional } from '../utils'
-import { convert } from './convert'
-import { isValueValid } from '../index'
+import { convert } from '../convert'
+import { isValid } from '../isValid'
 import type { JValue } from '../../declarations'
 
 export {
@@ -83,8 +83,7 @@ function isValidWithItems( decl: JArray, value: unknown ): value is Array<unknow
 function isItemsValid( itemDecl: JValue, items: Array<unknown> ): boolean {
   for ( let i = 0; i < items.length; i++ ) {
     const item = items[ i ]
-    const isValid = isValueValid( itemDecl, item )
-    if ( !isValid ) return false
+    if ( !isValid( itemDecl, item ) ) return false
   }
   return true
 }

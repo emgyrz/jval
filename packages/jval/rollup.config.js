@@ -2,11 +2,10 @@ import path from 'path'
 import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
+import pkg from './package.json'
 
 const input = path.resolve( __dirname, './src/index.ts' )
 const outDir = path.resolve( __dirname, './dist' )
-
-const PKG_NAME = 'jval'
 
 function gen( params ) {
   const { fmt, forProd } = params
@@ -16,6 +15,7 @@ function gen( params ) {
     output: {
       file: genName( params ),
       format: fmt,
+      name: pkg.name,
       sourcemap: !!forProd,
     },
     plugins: [
@@ -41,7 +41,8 @@ function genName( { name, fmt, forProd } ) {
 }
 
 export default [
-  gen( { name: PKG_NAME, fmt: 'cjs', forProd: false } ),
-  gen( { name: PKG_NAME, fmt: 'cjs', forProd: true } ),
+  gen( { name: pkg.name, fmt: 'cjs', forProd: false } ),
+  gen( { name: pkg.name, fmt: 'cjs', forProd: true } ),
   gen( { name: 'index', fmt: 'esm' } ),
+  gen( { name: 'index', fmt: 'umd' } ),
 ]

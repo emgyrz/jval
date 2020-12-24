@@ -1,4 +1,4 @@
-import { castBool, isBool, isNil, isNum, isStr, isUint } from '../../hlp'
+import { castBool, isBool, isNil, isNum, isStr, isUint } from 'hlp'
 
 type Indexed = Record<string, unknown>
 

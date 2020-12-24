@@ -1,4 +1,4 @@
-import { isNil, isObj, jstr } from '../../hlp'
+import { isNil, isObj, jstr } from 'hlp'
 import { JValue } from '../JValue'
 import type { JObjectOptions } from '../JObject'
 

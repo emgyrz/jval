@@ -1,4 +1,4 @@
-import { isNil, isStr } from '../../hlp'
+import { isNil, isStr } from 'hlp'
 import { getBool, getStrOrNull, getUintOrNull } from './utils'
 import type { JStringOptions } from '../JString'
 import type { ConvertOptionType } from './types'
@@ -67,17 +67,11 @@ function checkOptsCorrectness( opts: JStringVerifiedOptions ): never | void {
 }
 
 function checkOrDefault( opts: JStringVerifiedOptions ): never | void {
-  const { minLength, maxLength, orDefault } = opts
+  const { minLength, orDefault } = opts
   if ( !orDefault ) return
 
   if ( minLength !== null && minLength > 0 ) {
     throw '"minLength" is set and is greater than zero.'
-    + ' So it conflicts with "orDefault" option which is set to `true`'
-    + ' and indicates that the value can be zero'
-  }
-
-  if ( maxLength !== null && maxLength < 0 ) {
-    throw '"maxLength" is set and is less than zero.'
     + ' So it conflicts with "orDefault" option which is set to `true`'
     + ' and indicates that the value can be zero'
   }

@@ -1,0 +1,7 @@
+{
+  "name": "hlp",
+  "version": "0.0.0",
+  "description": "jval helpers",
+  "main": "index.ts",
+  "private": true
+}

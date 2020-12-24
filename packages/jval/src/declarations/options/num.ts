@@ -1,4 +1,4 @@
-import { isNum } from '../../hlp'
+import { isNum } from 'hlp'
 import { getBool, getNumOrNull } from './utils'
 import type { JNumberOptions } from '../JNumber'
 import type { ConvertOptionType } from './types'

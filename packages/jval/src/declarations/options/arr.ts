@@ -1,4 +1,4 @@
-import { isF, isNil, jstr } from '../../hlp'
+import { isF, isNil, jstr } from 'hlp'
 import { JValue } from '../JValue'
 import { getBool } from './utils'
 import type { JArrayOptions } from '../JArray'

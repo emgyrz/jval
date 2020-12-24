@@ -1,0 +1,32 @@
+{
+  "name": "jval",
+  "version": "0.3.0",
+  "description": "",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "module": "index.esm.js",
+  "private": false,
+  "homepage": "https://github.com/emgyrz/jval",
+  "author": {
+    "email": "emgyrz@gmail.com",
+    "name": "mz",
+    "url": "https://github.com/emgyrz/"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "hlp": "*"
+  },
+
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emgyrz/jval.git"
+  },
+  "keywords": [
+    "validation",
+    "conversion",
+    "data manipulating",
+    "json",
+    "types"
+  ]
+}

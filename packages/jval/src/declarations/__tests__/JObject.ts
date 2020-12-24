@@ -16,6 +16,8 @@ describe( 'jObject', () => {
   it( 'invalid opts', () => {
     const invalidOpts = [
       {},
+      { props: [] },
+      { props: { invalid: 3 } },
       undefined,
     ]
     invalidOpts.forEach( ( opts ) => {

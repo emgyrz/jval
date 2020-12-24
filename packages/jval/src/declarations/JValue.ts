@@ -1,4 +1,4 @@
-import { isObj, isStr, jstr } from '../hlp'
+import { isObj, isStr, jstr } from 'hlp'
 import { DeclarationError } from "./error"
 import { getBool, getStrOrNull } from './options/utils'
 import { getOptionalConvertOption } from './options/getConvertOption'

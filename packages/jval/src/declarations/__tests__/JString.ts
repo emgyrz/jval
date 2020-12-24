@@ -21,12 +21,15 @@ describe( 'jString', () => {
       { orDefault: [] },
       { minLength: '3' },
       { minLength: 3.1 },
+      { minLength: -1 },
       { maxLength: {} },
       { maxLength: 10.1 },
+      { maxLength: -1 },
       { nullable: 10 },
       { optional: 'foo' },
       { literals: {} },
       { literals: [] },
+      { literals: [ 2 ] },
       { convert: (): void => { return } },
     ]
     invalidOpts.forEach( ( opts ) => {

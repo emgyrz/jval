@@ -1,4 +1,4 @@
-import { isF, isNil, isObj, isStr } from '../../hlp'
+import { isF, isNil, isObj, isStr } from 'hlp'
 import { JValue } from '../JValue'
 import type { ConvertOptionType } from './types'
 

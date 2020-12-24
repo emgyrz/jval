@@ -7,17 +7,17 @@ export function jstr( val: unknown ): string {
 //   return isObj( obj ) && obj.hasOwnProperty( key )
 // }
 
-
-export function isPrimitiveArraysSimilar( arr: unknown[], other: unknown[] ): boolean {
-  if ( arr.length !== other.length ) return false
-  const arrCopy = arr.slice( 0 ).sort()
-  const otherCopy = other.slice( 0 ).sort()
-
-  for ( let i = 0; i < arrCopy.length; i++ ) {
-    if ( arrCopy[ i ] !== otherCopy[ i ] ) return false
-  }
-  return true
-}
+//
+// export function isPrimitiveArraysSimilar( arr: unknown[], other: unknown[] ): boolean {
+//   if ( arr.length !== other.length ) return false
+//   const arrCopy = arr.slice( 0 ).sort()
+//   const otherCopy = other.slice( 0 ).sort()
+//
+//   for ( let i = 0; i < arrCopy.length; i++ ) {
+//     if ( arrCopy[ i ] !== otherCopy[ i ] ) return false
+//   }
+//   return true
+// }
 
 
 
@@ -44,10 +44,10 @@ export function isUint( n: unknown ): n is number {
 export function isStr( s: unknown ): s is string {
   return typeof s === 'string'
 }
-export function castStr( s: unknown, def?: string ): string {
-  if ( isStr( s ) ) return s
-  return isStr( def ) ? def : ''
-}
+// export function castStr( s: unknown, def?: string ): string {
+//   if ( isStr( s ) ) return s
+//   return isStr( def ) ? def : ''
+// }
 
 //
 // Boolean

@@ -7,13 +7,11 @@
     "test": "jest",
     "lint": "eslint packages/*/src --fix --ext .ts",
     "clean": "rm -rf packages/jval/dist",
-
     "dts:jval": "tsc -p packages/jval/tsconfig.json",
     "build:main:jval": "rollup -c packages/jval/rollup.config.js",
     "after:build:jval": "cp packages/jval/package.json packages/jval/dist/ && cp packages/jval/index.tpl.js packages/jval/dist/index.js",
     "build:jval": "yarn build:main:jval && yarn after:build:jval && yarn dts:jval",
     "build": "yarn clean && yarn build:jval",
-
     "b": "yarn build"
   },
   "private": true,

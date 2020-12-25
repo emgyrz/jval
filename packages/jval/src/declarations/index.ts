@@ -20,3 +20,12 @@ export type { JObjectOptions } from './JObject'
 
 export { JArray, Arr } from './JArray'
 export type { JArrayOptions } from './JArray'
+
+/**
+ * this is here because in other places it breaks tests due to circular dependencies
+ *
+ * the reason this useless variable is exported
+ * is because rollup otherwise removes all code from file
+ * when uses tree-shaking
+ */
+export { __isGetConvertOptsOverridden } from './predefinedConvertOpt/overrideMethods'

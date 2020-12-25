@@ -1,4 +1,4 @@
-import { isFloat, isInt, isValidDate } from 'hlp'
+import { isInt, isNum, isValidDate } from 'hlp'
 import { Num } from '../JNumber'
 import type { StringConvertAliases } from '../JString'
 import type { ConvertOptionType } from '../options/types'
@@ -7,7 +7,7 @@ export const strConvertPredefined: Record<StringConvertAliases, ConvertOptionTyp
   toInt: Object.freeze( {
     returnType: Num(),
     method: ( s: string ): null | number => {
-      const n = parseInt( s )
+      const n = parseFloat( s )
       return isInt( n ) ? n : null
     },
   } ),
@@ -15,7 +15,7 @@ export const strConvertPredefined: Record<StringConvertAliases, ConvertOptionTyp
     returnType: Num(),
     method: ( s: string ): null | number => {
       const n = parseFloat( s )
-      return isFloat( n ) ? n : null
+      return isNum( n ) ? n : null
     },
   },
   toDate: {
@@ -26,4 +26,3 @@ export const strConvertPredefined: Record<StringConvertAliases, ConvertOptionTyp
     },
   },
 }
-

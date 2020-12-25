@@ -1,7 +1,4 @@
-import { JBoolean, Bool } from '../JBoolean'
-import { JValueType } from '../types'
-import { DeclarationError } from '../error'
-import { Num } from '../JNumber'
+import { JBoolean, Bool, JValueType, DeclarationError, Num } from '..'
 
 describe( 'jArray', () => {
   it( 'defaults', () => {
@@ -19,6 +16,7 @@ describe( 'jArray', () => {
       { or: '' },
       { orDefault: [] },
       { convert: (): void => { return } },
+      { convert: 'bar' },
     ]
     invalidOpts.forEach( ( opts ) => {
       expect( () => {

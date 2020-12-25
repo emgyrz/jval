@@ -1,6 +1,4 @@
-import { JString, Str } from '../JString'
-import { JValueType } from '../types'
-import { DeclarationError } from '../error'
+import { JString, Str, JValueType, DeclarationError } from '..'
 
 describe( 'jString', () => {
   it( 'defaults', () => {
@@ -31,6 +29,7 @@ describe( 'jString', () => {
       { literals: [] },
       { literals: [ 2 ] },
       { convert: (): void => { return } },
+      { convert: 'notConvertAlias' },
     ]
     invalidOpts.forEach( ( opts ) => {
       expect( () => {

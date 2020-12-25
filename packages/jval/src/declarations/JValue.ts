@@ -4,7 +4,6 @@ import { getValidCommonJValueOptions } from './options/common'
 import type { JValueType } from "./types"
 import type { ConvertOptionType, CommonJValueOptions } from './options/types'
 
-
 export class JValue {
   public static isJValue( some: unknown ): some is JValue {
     return some instanceof JValue
@@ -15,7 +14,6 @@ export class JValue {
   public readonly nullable: boolean
   public readonly optional: boolean
   public readonly rename: null | string
-
   public readonly convert: null | ConvertOptionType
 
   constructor( jType: JValueType, optsIn: CommonJValueOptions ) {
@@ -25,7 +23,7 @@ export class JValue {
 
     let opts
     try {
-      opts = getValidCommonJValueOptions( optsIn, jType )
+      opts = getValidCommonJValueOptions( optsIn )
     } catch ( e: unknown ) {
       this.throwErr( e )
     }
@@ -33,7 +31,7 @@ export class JValue {
     this.nullable = opts.nullable
     this.optional = opts.optional
     this.rename = opts.rename
-    this.convert = opts.convert
+    this.convert = this._getConvertOption( opts.convert )
   }
 
 
@@ -52,5 +50,16 @@ export class JValue {
       declaration: this,
       msg,
     } )
+  }
+
+  protected _getConvertOption(
+    cvtUnverified: null | string | ConvertOptionType,
+  ): never | null | ConvertOptionType {
+    if ( isStr( cvtUnverified ) ) {
+      const msg = 'this type of declaration has no convert aliases.'
+      + ` So that, "${cvtUnverified}" is invalid`
+      this.throwErr( msg )
+    }
+    return cvtUnverified
   }
 }

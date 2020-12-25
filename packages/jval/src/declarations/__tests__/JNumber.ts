@@ -1,6 +1,4 @@
-import { JNumber, Num } from '../JNumber'
-import { JValueType } from '../types'
-import { DeclarationError } from '../error'
+import { JNumber, Num, JValueType, DeclarationError } from '..'
 
 describe( 'jNumber', () => {
   it( 'defaults', () => {
@@ -24,6 +22,7 @@ describe( 'jNumber', () => {
       { nullable: 10 },
       { optional: 'foo' },
       { convert: (): void => { return } },
+      { convert: 'notConvertAlias' },
     ]
     invalidOpts.forEach( ( opts ) => {
       expect( () => {

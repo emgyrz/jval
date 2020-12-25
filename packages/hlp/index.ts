@@ -33,10 +33,10 @@ export function isNum( n: unknown ): n is number {
 export function isInt( n: unknown ): n is number {
   return isNum( n ) && ( n % 1 === 0 )
 }
-
-export function isFloat( n: unknown ): n is number {
-  return isNum( n ) && ( n % 1 !== 0 )
-}
+//
+// export function isFloat( n: unknown ): n is number {
+//   return isNum( n ) && ( n % 1 !== 0 )
+// }
 
 export function isUint( n: unknown ): n is number {
   return isInt( n ) && n >= 0

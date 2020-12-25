@@ -1,8 +1,4 @@
-import { JArray, Arr } from '../JArray'
-import { Str } from '../JString'
-import { JValueType } from '../types'
-import { DeclarationError } from '../error'
-import { JValue } from '../JValue'
+import { Str, JArray, Arr, JValueType, DeclarationError, JValue } from '..'
 
 describe( 'jArray', () => {
   it( 'defaults', () => {
@@ -23,6 +19,7 @@ describe( 'jArray', () => {
       { notEmpty: {} },
       { skipNonValid: 'bar' },
       { convert: (): void => { return } },
+      { convert: 'notConvertAlias' },
     ]
     invalidOpts.forEach( ( opts ) => {
       expect( () => {

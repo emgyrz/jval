@@ -27,6 +27,11 @@ function gen( params ) {
       } ),
       ...( forProd ? [ terser() ] : [] )
     ],
+    onwarn( warning, rollupWarn ) {
+      if ( warning.code !== 'CIRCULAR_DEPENDENCY' ) {
+        rollupWarn( warning )
+      }
+    }
   }
 }
 

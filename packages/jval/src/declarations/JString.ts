@@ -43,4 +43,3 @@ export class JString extends JValue {
 export function Str( opts?: JStringOptions ): JString {
   return new JString( opts )
 }
-

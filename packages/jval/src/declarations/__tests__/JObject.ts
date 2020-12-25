@@ -1,8 +1,4 @@
-import { JObject, Obj } from '../JObject'
-import { Bool } from '../JBoolean'
-import { Num } from '../JNumber'
-import { JValueType } from '../types'
-import { DeclarationError } from '../error'
+import { JObject, Obj, Bool, Num, JValueType, DeclarationError } from '..'
 
 describe( 'jObject', () => {
   it( 'defaults', () => {

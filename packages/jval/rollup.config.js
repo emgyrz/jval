@@ -31,9 +31,11 @@ function gen( params ) {
       if ( warning.code !== 'CIRCULAR_DEPENDENCY' ) {
         rollupWarn( warning )
       }
-    }
+    },
   }
 }
+
+
 
 function genName( { name, fmt, forProd } ) {
   const nameParts = [ name, fmt ]

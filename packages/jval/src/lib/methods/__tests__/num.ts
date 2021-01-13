@@ -1,5 +1,6 @@
 import { JNumber, Num } from '../../../declarations'
 import { getNum, isNumValid } from '../num'
+import { JvalError } from '../../error'
 
 describe( 'number converter', () => {
   it( 'should validate number no opts', () => {
@@ -49,8 +50,8 @@ describe( 'number converter', () => {
     function testThrowing( val: unknown, decl: JNumber ): void {
       expect( () => {
         getNum( decl, val )
-        // TODO: custom error
-      } ).toThrow( Error )
+        // eslint-disable-next-line jest/require-to-throw-message
+      } ).toThrow()
     }
 
     testThrowing( 5, Num( { max: 2 } ) )

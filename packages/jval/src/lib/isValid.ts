@@ -14,8 +14,6 @@ export function isValid( decl: JValue, value: unknown ): boolean {
     case JValueType.String: { return isStrValid( decl as JString, value ) }
     case JValueType.Object: { return isObjValid( decl as JObject, value ) }
     case JValueType.Array: { return isArrValid( decl as JArray, value ) }
-    // TODO:
-    default: { throw 'invalid jType error' }
   }
 }
 

@@ -1,26 +1,36 @@
-import { jstr } from 'hlp'
 import { JValue } from '../declarations'
 import { isValid } from './isValid'
 import { convert } from './convert'
+import { JvalError } from './error'
 
 
-export function isValueValid( decl: JValue, value: unknown ): boolean {
+export function isValueValid( decl: JValue, value: unknown ): never | boolean {
+  if ( !JValue.isJValue( decl ) ) {
+    throw new JvalError( { decl: null, val: decl, msg: '' } )
+  }
   return isValid( decl, value )
 }
 
 export function convertValue( decl: JValue, value: unknown ): never | null | undefined | unknown {
   if ( !JValue.isJValue( decl ) ) {
-    // TODO: err
-    throw `${jstr( decl )} is not a valid declaration`
+    throw new JvalError( { decl: null, val: decl, msg: '' } )
   }
 
-  // TODO: wrap with try/catch and error
-  return convert( decl, value )
+  try {
+    return convert( decl, value )
+  } catch ( e: unknown ) {
+    throw new JvalError( { decl, val: value, msg: String( e ) } )
+  }
 }
 
 export function convertJsonValue( decl: JValue, jsonStr: string ): never | null | undefined | unknown {
-  // TODO: handle SyntaxError
-  const dataIn = JSON.parse( jsonStr )
+  let dataIn
+
+  try {
+    dataIn = JSON.parse( jsonStr )
+  } catch ( e: unknown ) {
+    throw new JvalError( { decl, val: jsonStr, msg: 'cannot parse passed JSON string' } )
+  }
 
   return convertValue( decl, dataIn )
 }

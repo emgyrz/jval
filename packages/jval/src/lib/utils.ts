@@ -5,6 +5,6 @@ export function getNullOrOptional( decl: JValue, value: unknown ): null | undefi
   if ( decl.nullable ) return null
   if ( decl.optional ) return undefined
   // console.trace()
-  throw new Error( `cannot convert value ${JSON.stringify( value )} to ${decl.jType}` )
+  throw `cannot convert value ${JSON.stringify( value )} as J${decl.jType}`
 }
 

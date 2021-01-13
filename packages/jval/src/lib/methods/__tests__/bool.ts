@@ -1,5 +1,6 @@
 import { Bool, JBoolean } from '../../../declarations'
 import { getBool, isBoolValid } from '../bool'
+import { JvalError } from '../../error'
 
 describe( 'boolean converter', () => {
   it( 'should validate boolean', () => {
@@ -39,8 +40,8 @@ describe( 'boolean converter', () => {
     function testThrowing( val: unknown, decl: JBoolean ): void {
       expect( () => {
         getBool( decl, val )
-        // TODO: custom error
-      } ).toThrow( Error )
+        // eslint-disable-next-line jest/require-to-throw-message
+      } ).toThrow()
     }
 
     testThrowing( 5, Bool() )

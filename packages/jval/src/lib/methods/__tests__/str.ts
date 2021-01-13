@@ -1,5 +1,6 @@
 import { DeclarationError, JString, Str } from '../../../declarations'
 import { getStr, isStrValid } from '../str'
+import { JvalError } from '../../error'
 
 describe( 'string converter', () => {
   it( 'should validate string no opts', () => {
@@ -57,8 +58,8 @@ describe( 'string converter', () => {
     function testThrowing( val: unknown, decl: JString ): void {
       expect( () => {
         getStr( decl, val )
-        // TODO: custom error
-      } ).toThrow( Error )
+        // eslint-disable-next-line jest/require-to-throw-message
+      } ).toThrow()
     }
 
     testThrowing( 'foo', Str( { maxLength: 2 } ) )

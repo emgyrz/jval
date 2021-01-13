@@ -33,14 +33,21 @@ jobs:
           # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
       - name: test
         run: |
-          npm i -g yarn
           yarn install
           yarn test:jcov
       - name: gen_cov_badge
         run: |
           set -x
-
           COVERAGE_PERCENT=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
-          echo $COVERAGE_PERCENT
+          if (( $(echo "$total <= 50" | bc -l) )) ; then
+            COLOR=red
+          elif (( $(echo "$total > 80" | bc -l) )); then
+            COLOR=green
+          else
+            COLOR=orange
+          fi
+
+#          curl "https://img.shields.io/badge/coverage-COVERAGE_PERCENT%25-$COLOR" > badge.svg
+
 
 

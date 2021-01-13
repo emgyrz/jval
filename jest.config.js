@@ -6,4 +6,6 @@ module.exports = {
     '<rootDir>/packages/jval/src/**/__tests__/*.ts',
   ],
   moduleFileExtensions: [ 'ts', 'js' ],
+  collectCoverage: true,
+  coverageReporters: [ "json-summary" ]
 }

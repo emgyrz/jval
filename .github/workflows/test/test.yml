@@ -2,7 +2,7 @@
 
 name: test
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -35,5 +35,12 @@ jobs:
         run: |
           npm i -g yarn
           yarn install
-          yarn test
-      
+          yarn test:jcov
+      - name: gen_cov_badge
+        run: |
+          set -x
+
+          COVERAGE_PERCENT=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
+          echo $COVERAGE_PERCENT
+
+

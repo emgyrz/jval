@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:jcov": "jest --coverage --coverageReporters=json-summary",
     "lint": "eslint packages/*/src --fix --ext .ts",
     "clean": "rm -rf packages/jval/dist",
     "dts:jval": "tsc -p packages/jval/tsconfig.json",

@@ -35,6 +35,6 @@ jobs:
           # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
       - name: test
         run: |
-          npm i,
+          npm i
           npm test
       

@@ -35,17 +35,20 @@ jobs:
         run: |
           yarn install
           yarn test:jcov
-      - name: gen_cov_badge
+      - name: gen_cov
         run: |
-          set -x
-          COVERAGE_PERCENT=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
-          if (( $(echo "$total <= 50" | bc -l) )) ; then
-            COLOR=red
-          elif (( $(echo "$total > 80" | bc -l) )); then
-            COLOR=green
-          else
-            COLOR=orange
-          fi
+          bash <(curl -s https://codecov.io/bash)
+#           set -x
+#           COVERAGE_PERCENT=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
+#           if (( $(echo "$total <= 50" | bc -l) )) ; then
+#             COLOR=red
+#           elif (( $(echo "$total > 80" | bc -l) )); then
+#             COLOR=green
+#           else
+#             COLOR=orange
+#           fi
+          
+            
 
 #          curl "https://img.shields.io/badge/coverage-COVERAGE_PERCENT%25-$COLOR" > badge.svg
 

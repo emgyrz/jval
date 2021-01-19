@@ -33,11 +33,12 @@ jobs:
           # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
       - name: test
         run: |
+          npm install -g codecov
           yarn install
           yarn test:jcov
       - name: gen_cov
         run: |
-          bash <(curl -s https://codecov.io/bash)
+            codecov
 #           set -x
 #           COVERAGE_PERCENT=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
 #           if (( $(echo "$total <= 50" | bc -l) )) ; then
